@@ -1,7 +1,8 @@
-var routes = {};
 
+//Import models
 var mongoose = require('mongoose');
-var Article = require('../models/article');
+var Article = require('.././models/articleModel.js');
+var routes = {};
 
 routes.home = function(req,res) {
 	Article.find({}).sort({"_id": -1}).exec(function(err,arts) {
@@ -15,8 +16,6 @@ route.article = function(req,res) {
 		res.json(art);
 	});
 }
-
-rou
 
 routes.addArticle = function(req, res){
 	var data = req.body;
@@ -41,3 +40,4 @@ routes.editArticle = function(req, res){
 	});
 	res.end;
 }
+
