@@ -4,8 +4,8 @@
 	<div class="article" if={ !editMode && !addMode }>
 		<h2 id="title">{ opts.article.title }</h2>
 		<p id="content">{ opts.article.content }</p>
-		<button onclick={ toggleEdit }>Edit</button>
-		<button onClick={ deleteArticle }>Delete</button>
+		<button class="center-button" onclick={ toggleEdit }>Edit</button>
+		<button class="center-button" onClick={ deleteArticle }>Delete</button>
 	</div>
 
 

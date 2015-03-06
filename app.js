@@ -1,6 +1,8 @@
 //Chelsea Bailey & Haley Pelletier
 //Olin.js LAB1 - Wiki - Riot
 
+//All riot information from: http://listverse.com/2014/02/07/10-deadliest-riots-in-history/
+
 //Imports
 var express = require('express');
 var path = require('path');

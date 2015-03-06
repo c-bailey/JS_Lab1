@@ -82,10 +82,34 @@ body {
 	font-weight: 400;
 }
 
+#source-bar {
+	width: 100%;
+	padding-left: 0.2em;
+	background-color:#6495ED;
+	font-weight: 300;
+}
+
 .side-button {
-	width: 35%;
+	width: 40%;
 	font-size: 1.25em;
+	background-color: #00CC99;
 	position: relative;
 	float: left;
+}
+
+.side-button:hover {
+	background-color: #6495ED;
+}
+
+.center-button {
+	width: 15%;
+	font-size: 1.25em;
+	background-color: #00CC99;
+	position: relative;
+	float: left;
+}
+
+.center-button:hover {
+	background-color: #6495ED;
 }
 
