@@ -19,6 +19,7 @@ router.get('/:id', function(req,res) {
 
 router.post('/', function(req, res){
 	var data = req.body;
+	console.log(data);
 	art = new Article({
 		title: data.title,
 		content: data.content
@@ -33,12 +34,22 @@ router.post('/', function(req, res){
 
 router.put('/:id', function(req, res){
 	var data = req.body;
-	Article.findOneAndUpdate({title: data.title}, data.body, function(err,art){
+	console.log(data);
+	Article.findByIdAndUpdate(data.id,{title: data.title, content: data.content}, function(err,art){
 		if (err) {
 			console.log('could not update', err);
 		}
 	});
 	res.end;
+});
+
+router.delete('/:id', function(req,res) {
+	var data = req.body;
+	Article.findByIdAndRemove(data.id,function(err){
+		if(err) {
+			console.log('could not delete',err);
+		}
+	});
 });
 
 module.exports = router;

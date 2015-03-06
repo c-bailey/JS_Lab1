@@ -1,7 +1,7 @@
 <h1>Riot Wiki</h1>
 
-<sidebar></sidebar>
-<article></article>
+<sidebar><article></article></sidebar>
+
 
 <!-- include the tags -->
 <script src="/views/sidebar.tag" type="riot/tag"></script>
@@ -14,7 +14,6 @@
 <script>
 
 $.get('/article').done(function(articles) {
-	console.log(articles);
 	riot.mount('*', {
 		articles: articles,
 		article: articles[0]
