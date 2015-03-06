@@ -63,7 +63,8 @@
 			data: newData,
 			success: function(){
 				$('.article').replaceWith('');
-				article.update()
+				var index = opts.articles.indexOf(opts.article);
+				if (index!=-1) {opts.articles.splice(index,1);}
 				riot.update()
 			}
 		}).error(console.error);

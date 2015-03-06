@@ -11,8 +11,10 @@ router.get('/', function(req,res) {
 });
 
 router.get('/:id', function(req,res) {
-	var data = req.body;
-	Article.findOne({title: data.title}).exec(function(err,art) {
+	var data = req.query.id;
+	console.log(data);
+	Article.findById(data).exec(function(err,art) {
+		console.log(art);
 		res.json(art);
 	});
 });

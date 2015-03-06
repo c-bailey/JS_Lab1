@@ -29,16 +29,23 @@
 	<script>
 	this.addMode = false;
 	var sidebar = this;
+	var article = opts.article;
 
 	toggleAdd (e) {
 		this.addMode = !this.addMode;
 	}
 
 	showArticle(e) {
+		var newData = {};
+		newData['id'] = e.item._id;
 		riot.route('articles/'+e.item._id);
-		$.get('/article/'+e.item._id).done(function(article){
-
+		$.get('/article/'+e.item._id,newData).done(function(newArticle){
+			article._id = newArticle._id;
+			article.title = newArticle.title;
+			article.content = newArticle.content;
+			riot.update();
 		});
+		return true;
 	}
 
 	randomArticle(e) {
@@ -46,14 +53,20 @@
 		var rand_index = Math.floor(Math.random()*len);
 		var rand_art = opts.articles[rand_index];
 		var art_id = rand_art._id;
-		riot.route('/articles/'+art_id);
-		$.get('/article/'+art_id).done(function(article){
 
+		var newData = {};
+		newData['id'] = art_id;
+		riot.route('articles/'+art_id);
+		$.get('/article/'+art_id,newData).done(function(newArticle){
+			article._id = newArticle._id;
+			article.title = newArticle.title;
+			article.content = newArticle.content;
+			riot.update();
 		});
 	}
 
 	addArticle(e) {
-		var newData = {}
+		var newData = {};
 		newData['title'] = this.title.value;
 		newData['content'] = this.content.value;
 		$.post('/article', newData).done(function(article){
