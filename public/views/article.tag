@@ -1,13 +1,13 @@
 <article>
 
 	<!-- normal article display -->
-	<div>
+	<div if={ !editMode }>
 		<h2>Article Title</h2>
 		<p>This is the article body.</p>
 	</div>
 
 	<!-- edit article display -->
-	<form>
+	<form if={ editMode }>
 		<input>
 		<br>
 		<textarea/>
@@ -18,7 +18,18 @@
 	<br></br>
 
 	<!-- action buttons -->
-	<button>Edit</button>
+	<button onclick={ toggleEdit }>Edit</button>
 	<button>Delete</button>
+
+
+	<!-- javascript -->
+	<script>
+
+	this.editMode = false;
+	this.toggleEdit = function(e) {
+		this.editMode = !this.editMode;
+	}
+
+	</script>
 
 </article>

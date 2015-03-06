@@ -9,10 +9,18 @@
 		</ul>
 	</div>
 
+	<br></br>
+
 	<!-- displayed topic -->
 	<div>
 		<article/>
 	</div>
+
+	<br></br>
+
+	<!-- action buttons -->
+	<button>Add</button>
+	
 
 	<script>
 		// riot.route(function(collection,id,action) {
