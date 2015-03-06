@@ -4,7 +4,7 @@
 	<div>
 		<ul>
 			<li each={ opts.articles }>
-				<button onclick={ parent.showArticle }>{ this.title }</button>
+				<button class='article-button' onclick={ parent.showArticle }>{ this.title }</button>
 			</li>
 		</ul>
 	</div>

@@ -1,0 +1,47 @@
+body {
+	max-width: 1024px;
+	margin: 0, auto;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.article-parts {
+	position: relative;
+	float: right;
+	width: 75%;
+}
+
+.sidebar-parts {
+	position: relative;
+	float: left;
+	width: 25%;
+}
+
+ul, li {
+	list-style-type: none;
+}
+
+button {
+	border: none;
+
+}
+
+.article-button {
+	width: 80%;
+	margin: 1em, 10%;
+	font-weight: 300;
+	font-size: 1.5em;
+	padding: .5em, .25em;
+}
+
+#title {
+	font-size: 3em;
+	font-weight: 600;
+	margin-top: 0;
+	margin-bottom: 0.1em;
+}
+
+#content {
+	font-size: 1em;
+	font-weight: 300;
+}
+
