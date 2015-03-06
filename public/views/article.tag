@@ -1,27 +1,24 @@
 <article>
 
 	<!-- normal article display -->
-	<div if={ !editMode && !addMode }>
-		<h2>{ opts.article.title }</h2>
-		<p>{ opts.article.content }</p>
+	<div class="article" if={ !editMode && !addMode }>
+		<h2 id="title">{ opts.article.title }</h2>
+		<p id="content">{ opts.article.content }</p>
+		<button onclick={ toggleEdit }>Edit</button>
+		<button onClick={ deleteArticle }>Delete</button>
 	</div>
 
 
 	<!-- edit article display -->
 	<form if={ editMode } onSubmit={ editArticle }>
-		<input id={ opts.article._id } name="title" value={ opts.article.title }>
+		<input id={ opts.article._id } name="form_title" value={ opts.article.title }>
 		<br>
-		<textarea name="content" value={ opts.article.content }/>
+		<textarea name="form_content" value={ opts.article.content }/>
 		<br>
 		<input type="submit">
 	</form>
 
 	<br></br>
-
-
-	<!-- action buttons -->
-	<button onclick={ toggleEdit }>Edit</button>
-	<button onClick={ deleteArticle }>Delete</button>
 
 
 	<!-- javascript -->
@@ -34,33 +31,41 @@
 	}
 
 	editArticle(e) {
-		riot.route('/article/'+this.title.id);
+		riot.route('/article/'+this.form_title.id);
 		e.preventDefault();
-		console.log(e);
 		var newData = {}
-		newData['id'] = this.title.id;
-		newData['title'] = this.title.value;
-		newData['content'] = this.content.value;
+		newData['id'] = this.form_title.id;
+		newData['title'] = this.form_title.value;
+		newData['content'] = this.form_content.value;
 		$.ajax({
-			url: '/article/'+this.title.id,
+			url: '/article/'+this.form_title.id,
 			type: 'PUT',
-			success: function(){article.update();},
-			data: newData
+			data: newData,
+			success: function(){
+				$('#title').text(newData['title']);
+				$('#content').text(newData['content']);
+				article.update();
+				riot.update();
+			}
 		}).error(console.error);
 		this.toggleEdit()
 		return true;
 	}
 
 	deleteArticle(e) {
-		riot.route('/article/'+this.title.id);
+		riot.route('/article/'+this.form_title.id);
 		e.preventDefault();
 		var newData = {}
-		newData['id'] = this.title.id;
+		newData['id'] = this.form_title.id;
 		$.ajax({
-			url: '/article/'+this.title.id,
+			url: '/article/'+this.form_title.id,
 			type: 'DELETE',
-			success: function(){parent.update();},
-			data: newData
+			data: newData,
+			success: function(){
+				$('.article').replaceWith('');
+				article.update()
+				riot.update()
+			}
 		}).error(console.error);
 		return true;
 	}

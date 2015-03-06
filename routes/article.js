@@ -34,13 +34,12 @@ router.post('/', function(req, res){
 
 router.put('/:id', function(req, res){
 	var data = req.body;
-	console.log(data);
 	Article.findByIdAndUpdate(data.id,{title: data.title, content: data.content}, function(err,art){
 		if (err) {
 			console.log('could not update', err);
 		}
 	});
-	res.end;
+	res.end();
 });
 
 router.delete('/:id', function(req,res) {
@@ -50,6 +49,7 @@ router.delete('/:id', function(req,res) {
 			console.log('could not delete',err);
 		}
 	});
+	res.end();
 });
 
 module.exports = router;

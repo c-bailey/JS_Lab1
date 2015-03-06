@@ -13,6 +13,7 @@
 
 	<!-- action buttons -->
 	<button onclick={ toggleAdd }>Add</button>
+	<button onclick={ randomArticle }>Random</button>
 	<br></br>
 	
 
@@ -38,18 +39,19 @@
 		riot.route('articles/'+e.item._id);
 		$.get('/article/'+e.item._id).done(function(article){
 
-		})
+		});
 	}
 
-	// this.addArticle = function(e) {
-	// 	e.preventDefault();
-	// 	var newData = {}
-	// 	newData['title'] = this.title.value;
-	// 	newData['content'] = this.content.value;
-	// 	$.post('/article', newData).done(function(article){
-	// 	}).error(console.error);
-	// 	this.toggleAdd();
-	// }
+	randomArticle(e) {
+		var len = opts.articles.length;
+		var rand_index = Math.floor(Math.random()*len);
+		var rand_art = opts.articles[rand_index];
+		var art_id = rand_art._id;
+		riot.route('/articles/'+art_id);
+		$.get('/article/'+art_id).done(function(article){
+
+		});
+	}
 
 	addArticle(e) {
 		var newData = {}
@@ -61,7 +63,6 @@
 		this.toggleAdd();
 		return true;
 	}
-
 	</script>
 
 </sidebar>
