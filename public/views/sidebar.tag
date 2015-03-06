@@ -4,7 +4,7 @@
 	<div>
 		<ul>
 			<li each={ opts.articles }>
-				<button class='article-button' onclick={ parent.showArticle }>{ this.title }</button>
+				<button id={ this._id } class='article-button' onclick={ parent.showArticle }>{ this.title }</button>
 			</li>
 		</ul>
 	</div>
@@ -40,9 +40,12 @@
 		newData['id'] = e.item._id;
 		riot.route('articles/'+e.item._id);
 		$.get('/article/'+e.item._id,newData).done(function(newArticle){
+			var saveTitle = article.title;
+			var saveId = article._id;
 			article._id = newArticle._id;
 			article.title = newArticle.title;
 			article.content = newArticle.content;
+			$('#'+String(saveId)).text(saveTitle);
 			riot.update();
 		});
 		return true;
@@ -58,11 +61,15 @@
 		newData['id'] = art_id;
 		riot.route('articles/'+art_id);
 		$.get('/article/'+art_id,newData).done(function(newArticle){
+			var saveTitle = article.title;
+			var saveId = article._id;
 			article._id = newArticle._id;
 			article.title = newArticle.title;
 			article.content = newArticle.content;
+			$('#'+String(saveId)).text(saveTitle);
 			riot.update();
 		});
+		return true;
 	}
 
 	addArticle(e) {
