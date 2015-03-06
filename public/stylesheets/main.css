@@ -31,7 +31,6 @@ button {
 
 }
 
-
 body {
 	max-width: 1024px;
 	margin: 0, auto;
@@ -112,4 +111,3 @@ body {
 .center-button:hover {
 	background-color: #6495ED;
 }
-
