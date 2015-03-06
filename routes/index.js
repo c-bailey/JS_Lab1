@@ -10,7 +10,7 @@ routes.home = function(req,res) {
 	});
 }
 
-route.article = function(req,res) {
+routes.article = function(req,res) {
 	var data = req.body;
 	Article.findOne({title: data.title}).exec(function(err,art) {
 		res.json(art);
@@ -38,6 +38,6 @@ routes.editArticle = function(req, res){
 			console.log('could not update', err);
 		}
 	});
-	res.end;
+	res.end();
 }
 
