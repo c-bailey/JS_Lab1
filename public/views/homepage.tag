@@ -3,7 +3,7 @@
 	<!-- list of all topics -->
 	<div>
 		<ul>
-			<li>
+			<li each={ opts.articles }>
 				<button></button>
 			</li>
 		</ul>
