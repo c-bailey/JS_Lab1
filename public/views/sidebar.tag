@@ -9,11 +9,10 @@
 		</ul>
 	</div>
 
-	<br></br>
 
 	<!-- action buttons -->
-	<button onclick={ toggleAdd }>Add</button>
-	<button onclick={ randomArticle }>Random</button>
+	<button class='side-button' onclick={ toggleAdd }>Add</button>
+	<button class='side-button' onclick={ randomArticle }>Random</button>
 	<br></br>
 	
 
