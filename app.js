@@ -23,6 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', index.home);
+app.get('/article', index.article);
 app.post('/addArticle',index.addArticle);
 app.post('/editArticle',index.editArticle);
 
