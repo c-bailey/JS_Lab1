@@ -5,6 +5,7 @@
 		<h2>{ opts.article.title }</h2>
 		<p>{ opts.article.content }</p>
 	</div>
+	
 
 	<!-- edit article display -->
 	<form if={ editMode }>
@@ -16,6 +17,7 @@
 	</form>
 
 	<br></br>
+
 
 	<!-- action buttons -->
 	<button onclick={ toggleEdit }>Edit</button>

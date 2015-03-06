@@ -1,19 +1,12 @@
-<homepage>
+<sidebar>
 
 	<!-- list of all topics -->
 	<div>
 		<ul>
 			<li each={ opts.articles }>
-				<button></button>
+				<button>{ this.title }</button>
 			</li>
 		</ul>
-	</div>
-
-	<br></br>
-
-	<!-- displayed topic -->
-	<div>
-		<article/>
 	</div>
 
 	<br></br>
@@ -27,4 +20,4 @@
 		// 	$.get(collection+'/'+id){}.done(function(data){riot.update(data);})});
 	</script>
 
-</homepage>
+</sidebar>

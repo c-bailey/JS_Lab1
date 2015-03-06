@@ -41,7 +41,7 @@ app.use(session({
 
 //Routes
 app.get('/', index.home);
-app.get('/article', article);
+app.use('/article', article);
 
 
 //Listening to the port

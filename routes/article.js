@@ -4,14 +4,20 @@ var Article = require('../models/articleModel');
 
 var router = express.Router();
 
-routes.article = function(req,res) {
+router.get('/', function(req,res) {
+	Article.find({}).sort({"_id": -1}).exec(function(err,arts) {
+		res.json(arts);
+	});
+});
+
+router.get('/:id', function(req,res) {
 	var data = req.body;
 	Article.findOne({title: data.title}).exec(function(err,art) {
 		res.json(art);
 	});
-}
+});
 
-routes.add = function(req, res){
+router.post('/', function(req, res){
 	var data = req.body;
 	art = new Article({
 		title: data.title,
@@ -23,9 +29,9 @@ routes.add = function(req, res){
 		}
 	});	
 	res.json(art);
-}
+});
 
-routes.edit = function(req, res){
+router.put('/:id', function(req, res){
 	var data = req.body;
 	Article.findOneAndUpdate({title: data.title}, data.body, function(err,art){
 		if (err) {
@@ -33,6 +39,6 @@ routes.edit = function(req, res){
 		}
 	});
 	res.end;
-}
+});
 
 module.exports = router;
