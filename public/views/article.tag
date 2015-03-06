@@ -2,15 +2,15 @@
 
 	<!-- normal article display -->
 	<div if={ !editMode }>
-		<h2>Article Title</h2>
-		<p>This is the article body.</p>
+		<h2>{ opts.article.title }</h2>
+		<p>{ opts.article.content }</p>
 	</div>
 
 	<!-- edit article display -->
 	<form if={ editMode }>
-		<input>
+		<input value={ opts.article.title }>
 		<br>
-		<textarea/>
+		<textarea value={ opts.article.content }/>
 		<br>
 		<input type="submit">
 	</form>
