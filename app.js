@@ -3,10 +3,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var express = require('express');
+var exphbs = require('express-handlebars');
 var riot = require('riot');
 
 var index = require('./routes/index');
-
+var article = require('./routes/article.js');
 var app = express();
 
 var mongoURI = process.env.MONGOURI || "mongodb://localhost/test";
@@ -23,9 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', index.home);
-app.get('/article', index.article);
-app.post('/addArticle',index.addArticle);
-app.post('/editArticle',index.editArticle);
+app.get('/article', article);
 
 app.listen(PORT, function() {
   console.log("Application running on port:", PORT);
