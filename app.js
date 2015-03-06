@@ -36,12 +36,15 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-
 //Routes
-app.get('/',index.home);
+app.get('/', index.home);
+app.get('/article', index.article);
+app.post('/addArticle',index.addArticle);
+app.post('/editArticle',index.editArticle);
 
 
-//Run the app
+//Listening to the port
 app.listen(PORT, function() {
   console.log("Application running on port:", PORT);
 });
+
