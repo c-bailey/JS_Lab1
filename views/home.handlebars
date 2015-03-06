@@ -1,2 +1,19 @@
-<sidebar></sidebar>
-<mainArticle></mainArticle>
+<h1>Riot Wiki</h1>
+
+<homepage></homepage>
+
+<!-- include riot.js -->
+<script src="//cdn.jsdelivr.net/g/riot@2.0(riot.min.js+compiler.min.js)"></script>
+
+<!-- include the tags -->
+<script src="/views/homepage.tag" type="riot/tag"></script>
+<script src="/views/article.tag" type="riot/tag"></script>
+
+<!-- mount the tags -->
+<script>
+$.get('/article').done(function(articles) {
+	riot.mount('*', {
+		articles: articles
+	})
+})
+</script>
