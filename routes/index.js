@@ -1,4 +1,3 @@
-
 //Import models
 var mongoose = require('mongoose');
 var Article = require('.././models/articleModel.js');
@@ -40,4 +39,3 @@ routes.editArticle = function(req, res){
 	});
 	res.end;
 }
-

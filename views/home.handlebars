@@ -10,6 +10,10 @@
 <script src="/views/article.tag" type="riot/tag"></script>
 
 <!-- mount the tags -->
-<script>riot.mount('homepage')</script>
-<script>riot.mount('article')</script>
-
+<script>
+$.get('/article').done(function(articles) {
+	riot.mount('*', {
+		articles: articles
+	})
+})
+</script>
